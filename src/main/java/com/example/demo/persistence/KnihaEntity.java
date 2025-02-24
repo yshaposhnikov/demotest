@@ -2,25 +2,19 @@ package com.example.demo.persistence;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class knihaEntity {
+public class KnihaEntity {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
     private String nazov;
     private String autor;
     private int pocetStran;
 
-    public knihaEntity(String nazov, String autor, int pocetStran) {
-        this.nazov = nazov;
-        this.autor = autor;
-        this.pocetStran = pocetStran;
 
-    }
 
     public String getNazov() {
         return nazov;
@@ -46,11 +40,11 @@ public class knihaEntity {
         this.pocetStran = pocetStran;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

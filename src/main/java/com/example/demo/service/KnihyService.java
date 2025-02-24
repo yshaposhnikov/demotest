@@ -16,18 +16,20 @@ public class KnihyService {
     private KnihaRepository knihaRepository;
 
 
-    public List<knihaDTO> zoznamVsetkychKnih() {
+    public List<KnihaDTO> zoznamVsetkychKnih() {
         Iterable<knihaEntity> knihaEntityIterable = knihaRepository.findAll();
-        List<knihaDTO> ret = new LinkedList<>();
+        List<KnihaDTO> ret = new LinkedList<>();
         for (knihaEntity knihaEntity : knihaEntityIterable) {
-            knihaDTO knihaDTO = new knihaDTO(knihaEntity.getId(),
+            KnihaDTO knihaDTO = new KnihaDTO(knihaEntity.getId(),
                     knihaEntity.getNazov(), knihaEntity.getAutor(),
                     knihaEntity.getPocetStran());
-            knihy.add(knihaDTO);
+            ret.add(knihaDTO);
+
         }
+        return ret;
     }
 
-    public void vytvorKnihu(knihaDTO knihaDTO) {
+    public Long vytvorKnihu(KnihaDTO knihaDTO) {
         knihaEntity knihaEntity = new knihaEntity();
         knihaEntity.setNazov(knihaDTO.getNazov());
         knihaEntity.setAutor(knihaDTO.getAutor());
